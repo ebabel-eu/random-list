@@ -1,0 +1,8 @@
+bower_components/
+build/
+node_modules/
+firebase-debug.log
+npm-debug.log
+.vscode/
+analysis.json
+ignore/

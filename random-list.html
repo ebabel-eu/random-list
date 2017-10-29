@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="random-list">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `random-list`
+     * Returns the subset of a list of x elements from a larger source list.
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class RandomList extends Polymer.Element {
+      static get is() { return 'random-list'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'random-list'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(RandomList.is, RandomList);
+  </script>
+</dom-module>
