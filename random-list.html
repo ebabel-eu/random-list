@@ -10,7 +10,7 @@
     </style>
 
     <ul>
-      <template is="dom-repeat" items="[[source]]">
+      <template is="dom-repeat" items="[[list]]">
           <li>[[item]]</li>
       </template>
     </ul>
@@ -37,6 +37,9 @@
             type: Number,
             value: 1,
           },
+          list: {
+            type: Array,
+          },
           prop1: {
             type: String,
             value: 'random-list'
@@ -47,7 +50,13 @@
       ready() {
         super.ready();
 
-        console.log(this.source);
+        this.list = this.source.map(item => {
+          if (typeof item === 'object') {
+            return JSON.stringify(item);
+          }
+
+          return item;
+        });
       }
     }
 

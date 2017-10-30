@@ -23,9 +23,33 @@
       <demo-snippet>
         <template>
           <random-list
-            source='["red", "orange", "yellow", "green", "blue", "indigo", "violet"]'
-            max=3></random-list>
+            max="3"
+            source='["red", "orange", "yellow", "green", "blue", "indigo", "violet"]'>
+          </random-list>
+
+          <!--
+            Note:
+            The source value actually is
+            '["red", "orange", "yellow", "green", "blue", "indigo", "violet"]'
+          -->
         </template>
       </demo-snippet>
+
+      <h3>random-list of objects</h3>
+      <demo-snippet>
+        <template>
+          <random-list
+            max="2"
+            source='[{"symbol": "♠", "rank": "3"}, {"symbol": "♥", "rank": "q"}, {"symbol": "♠", "rank": "k"}, {"symbol": "♦", "rank": "a"}]'>
+          </random-list>
+
+          <!--
+            Note:
+            The source value actually is
+            '[{"symbol": "♠", "rank": "3"}, {"symbol": "♥", "rank": "q"}, {"symbol": "♠", "rank": "k"}, {"symbol": "♦", "rank": "a"}]'
+          -->
+        </template>
+      </demo-snippet>
+        
   </body>
 </html>
