@@ -9,9 +9,12 @@
       }
     </style>
 
-    <ul is="dom-repeat" items="[[source]]">
-      <li>[[item]]</li>
+    <ul>
+      <template is="dom-repeat" items="[[source]]">
+          <li>[[item]]</li>
+      </template>
     </ul>
+
   </template>
 
   <script>
