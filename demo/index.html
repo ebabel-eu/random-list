@@ -22,9 +22,21 @@
       <h3>Basic random-list demo</h3>
       <demo-snippet>
         <template>
-          <random-list></random-list>
+          <random-list
+            source='["red", "orange", "yellow", "green", "blue", "indigo", "violet"]'
+            max=3></random-list>
         </template>
       </demo-snippet>
-    </div>
+
+      <h3>Call public method to get a random subset</h3>
+      <demo-snippet>
+          <template>
+            <random-list id="rainbowList"></random-list>
+            <script>
+              console.log(this.$.rainbowList);
+            </script>
+          </template>
+        </demo-snippet>
+      </div>
   </body>
 </html>

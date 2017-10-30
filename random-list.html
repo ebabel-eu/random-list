@@ -7,7 +7,7 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <h2>Hello [[source]] and [[max]]!</h2>
   </template>
 
   <script>
@@ -23,11 +23,24 @@
       static get is() { return 'random-list'; }
       static get properties() {
         return {
+          source: {
+            type: Array,
+          },
+          max: {
+            type: Number,
+            value: 1,
+          },
           prop1: {
             type: String,
             value: 'random-list'
           }
         };
+      }
+
+      ready() {
+        super.ready();
+
+        console.log(this.source);
       }
     }
 
