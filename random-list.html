@@ -50,13 +50,17 @@
       ready() {
         super.ready();
 
-        this.list = this.source.map(item => {
+        const source = this.source.slice(0);
+
+        const list = source.map(item => {
           if (typeof item === 'object') {
             return JSON.stringify(item);
           }
 
           return item;
         });
+
+        this.list = list;
       }
     }
 
