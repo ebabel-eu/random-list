@@ -23,6 +23,7 @@
       <demo-snippet>
         <template>
           <random-list
+            id="rainbowList"
             display
             max="3"
             source='["red", "orange", "yellow", "green", "blue", "indigo", "violet"]'>
@@ -36,13 +37,32 @@
         </template>
       </demo-snippet>
 
+      <h3>List of prime numbers</h3>
+      <demo-snippet>
+        <template>
+          <random-list
+            id="primeList"
+            display
+            max="5"
+            source='[2, 3, 5, 7, 11, 13, 19, 23, 29, 31, 37, 41, 43, 47, 53]'>
+          </random-list>
+
+          <!--
+            Note:
+            The source value actually is
+            '[2, 3, 5, 7, 11, 13, 19, 23, 29, 31, 37, 41, 43, 47, 53]'
+          -->
+        </template>
+      </demo-snippet>
+
       <h3>List of objects</h3>
       <demo-snippet>
         <template>
           <random-list
+            id="cardList"
             display
             max="2"
-            source='[{"symbol": "♠", "rank": "3"}, {"symbol": "♥", "rank": "q"}, {"symbol": "♠", "rank": "k"}, {"symbol": "♦", "rank": "a"}]'>
+            source='[{"symbol": "♠", "rank": "3"}, {"symbol": "♥", "rank": "q"}, {"symbol": "♣", "rank": "k"}, {"symbol": "♦", "rank": "a"}]'>
           </random-list>
 
           <!--
@@ -57,6 +77,7 @@
       <demo-snippet>
         <template>
           <random-list
+            id="emptyList"
             display
             max="4"
             source="">
@@ -68,6 +89,7 @@
       <demo-snippet>
         <template>
           <random-list
+            id="zeroMaxList"
             display
             max="0"
             source='["red", "orange", "yellow", "green", "blue", "indigo", "violet"]'>

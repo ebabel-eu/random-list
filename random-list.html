@@ -68,9 +68,7 @@
         };
       }
 
-      ready() {
-        super.ready();
-
+      pickRandomList() {
         this.display = this.display && this.source && this.source.length > 0;
 
         if (!this.source || this.source.length === 0) {
@@ -99,30 +97,29 @@
         // Start with an empty list that will be output.
         const _list = [];
 
-        // Pick a random element.
-        const _selection = _source[Math.floor(Math.random() * (_source.length - 1))];
+        for (let i = 0; i < this.max; i++) {
+          // Pick a random element.
+          const _selection = _source[Math.floor(Math.random() * (_source.length - 1))];
 
-        // Add the random element to the list that will be output.
-        _list.push(_selection);
+          // Remove the random element from the source that will be output in the rest.
+          _source.splice(_source.indexOf(_selection), 1);
 
-        // Remove the random element from the source that will be output in the rest.
-        _source.splice(_source.indexOf(_selection), 1);
+          // Add the random element to the list that will be output.
+          _list.push(_selection);
+        }
 
         // Output.
         this.list = _list;
         this.rest = _source;
+      }
+
+      ready() {
+        super.ready();
+
+        this.pickRandomList();
       }
     }
 
     window.customElements.define(RandomList.is, RandomList);
   </script>
 </dom-module>
-
-<!--
-const adjectives = [ 'Amazing', 'Excellent', 'Awesome', 'Sensational', 'Unbelievable', 'Stupendous', 'Marvellous', 'Exciting', 'Spectacular', 'Phenomenal', 'Prodigious', 'Wondrous', 'Magical' ];
-const randomTitle = () => {
-  const selection = adjectives[Math.floor(Math.random() * (adjectives.length - 1))];
-  adjectives.splice(adjectives.indexOf(selection), 1);
-  return `${selection} Loan`;
-};
--->
