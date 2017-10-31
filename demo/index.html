@@ -19,10 +19,11 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic random-list demo</h3>
+      <h3>List of strings</h3>
       <demo-snippet>
         <template>
           <random-list
+            display
             max="3"
             source='["red", "orange", "yellow", "green", "blue", "indigo", "violet"]'>
           </random-list>
@@ -35,10 +36,11 @@
         </template>
       </demo-snippet>
 
-      <h3>random-list of objects</h3>
+      <h3>List of objects</h3>
       <demo-snippet>
         <template>
           <random-list
+            display
             max="2"
             source='[{"symbol": "♠", "rank": "3"}, {"symbol": "♥", "rank": "q"}, {"symbol": "♠", "rank": "k"}, {"symbol": "♦", "rank": "a"}]'>
           </random-list>
@@ -50,6 +52,28 @@
           -->
         </template>
       </demo-snippet>
-        
+
+      <h3>Empty source</h3>
+      <demo-snippet>
+        <template>
+          <random-list
+            display
+            max="4"
+            source="">
+          </random-list>
+        </template>
+      </demo-snippet>
+
+      <h3>Max set to 0</h3>
+      <demo-snippet>
+        <template>
+          <random-list
+            display
+            max="0"
+            source='["red", "orange", "yellow", "green", "blue", "indigo", "violet"]'>
+          </random-list>
+        </template>
+      </demo-snippet>
+
   </body>
 </html>
