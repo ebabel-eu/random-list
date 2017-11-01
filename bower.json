@@ -1,6 +1,6 @@
 {
   "name": "random-list",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Returns the subset of a list of x elements from a larger source list.",
   "main": "random-list.html",
   "dependencies": {
