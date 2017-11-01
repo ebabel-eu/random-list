@@ -13,14 +13,23 @@ bower install --save ebabel-eu/random-list
 ## Usage
 
 ```
-const rainbow = [ 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet' ];
-<random-list source="[[rainbow]]" max="3"></random-list>
+<random-list id="rainbowList"></random-list>
+```
+
+In a script where random-list is accessible, call its function pickRandomList:
+
+```
+const result = this.$.rainbowList.pickRandomList({
+  source: [ "red", "orange", "yellow", "green", "blue", "indigo", "violet" ],
+  max: 3,
+});
 ```
 
 this component picks 3 random colors from the rainbow list:
 
 ```
-[ 'orange', 'blue', 'violet' ]
+result.list is [ "orange", "blue", "violet" ]
+result.rest is [ "red", "yellow", "green", "indigo" ]
 ```
 
 ## Contributing
@@ -33,6 +42,9 @@ this component picks 3 random colors from the rainbow list:
 
 ## History
 
+- 1.0.0 works and is the first release
+- 0.3.0 works but not documented yet
+- 0.2.0 is also a pre-release version
 - 0.1.0 is a pre-release setup
 
 ## License
