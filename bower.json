@@ -1,6 +1,6 @@
 {
   "name": "random-list",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Returns the subset of a list of x elements from a larger source list and the rest that was not selected.",
   "authors": [
     "Nadjib Amar"
