@@ -3,29 +3,6 @@
 <link rel="import" href="../polymer/lib/elements/dom-if.html">
 
 <dom-module id="random-list">
-  <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-
-    <template is="dom-if" if="[[display]]">
-      <p>List: [[list.length]] elements</p>
-      <ul>
-        <template is="dom-repeat" items="[[list]]">
-            <li>[[item]]</li>
-        </template>
-      </ul>
-      <p>Rest: [[rest.length]] elements</p>
-      <ul>
-        <template is="dom-repeat" items="[[rest]]">
-            <li>[[item]]</li>
-        </template>
-      </ul>
-      </template>
-  </template>
-
   <script>
     /**
      * `random-list`
@@ -37,45 +14,6 @@
      */
     class RandomList extends Polymer.Element {
       static get is() { return 'random-list'; }
-      static get properties() {
-        return {
-          display: {
-            type: Boolean,
-          },
-          source: {
-            type: Array,
-            value: [],
-          },
-          max: {
-            type: Number,
-            value: 1,
-          },
-          list: {
-            type: Array,
-            value: [],
-          },
-          rest: {
-            type: Array,
-            value: [],
-          },
-        };
-      }
-
-      updateProperties(input) {
-        const {
-          display,
-          source,
-          max,
-          list,
-          rest,
-        } = input;
-
-        this.display = display;
-        this.source = source;
-        this.max = max;
-        this.list = list;
-        this.rest = rest;
-      }
 
       pickRandomList(input) {
         let {
@@ -85,14 +23,6 @@
         } = input;
 
         if (!source || source.length === 0 || max === 0) {
-          this.updateProperties({
-            display,
-            source: [],
-            max,
-            list: [],
-            rest: []
-          });
-
           return {
             list: [],
             rest: [],
@@ -124,28 +54,10 @@
         }
 
         // Output.
-        this.updateProperties({
-          display,
-          source,
-          max,
-          list,
-          rest,
-        });
-
         return {
           list,
           rest,
         };
-      }
-
-      ready() {
-        super.ready();
-
-        this.pickRandomList({
-          display: this.display,
-          source: this.source,
-          max: this.max,
-        });
       }
     }
 

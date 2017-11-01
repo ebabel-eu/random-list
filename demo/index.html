@@ -19,83 +19,22 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>List of strings</h3>
+      <h3>Random list of strings</h3>
       <demo-snippet>
         <template>
-          <random-list
-            id="rainbowList"
-            display
-            max="3"
-            source='["red", "orange", "yellow", "green", "blue", "indigo", "violet"]'>
-          </random-list>
+          <random-list id="rainbowList"></random-list>
 
           <!--
-            Note:
-            The source value actually is
-            '["red", "orange", "yellow", "green", "blue", "indigo", "violet"]'
+            In a script where random-list is accessible, call its function pickRandomList:
+
+            const result = this.$.rainbowList.pickRandomList({
+              source: ["red", "orange", "yellow", "green", "blue", "indigo", "violet"],
+              max: 3,
+            });
+
+            result will have a list and a rest property, where list is an array of 3 random strings and rest is an array of all the other strings.
           -->
         </template>
       </demo-snippet>
-
-      <h3>List of prime numbers</h3>
-      <demo-snippet>
-        <template>
-          <random-list
-            id="primeList"
-            display
-            max="5"
-            source='[2, 3, 5, 7, 11, 13, 19, 23, 29, 31, 37, 41, 43, 47, 53]'>
-          </random-list>
-
-          <!--
-            Note:
-            The source value actually is
-            '[2, 3, 5, 7, 11, 13, 19, 23, 29, 31, 37, 41, 43, 47, 53]'
-          -->
-        </template>
-      </demo-snippet>
-
-      <h3>List of objects</h3>
-      <demo-snippet>
-        <template>
-          <random-list
-            id="cardList"
-            display
-            max="2"
-            source='[{"symbol": "♠", "rank": "3"}, {"symbol": "♥", "rank": "q"}, {"symbol": "♣", "rank": "k"}, {"symbol": "♦", "rank": "a"}]'>
-          </random-list>
-
-          <!--
-            Note:
-            The source value actually is
-            '[{"symbol": "♠", "rank": "3"}, {"symbol": "♥", "rank": "q"}, {"symbol": "♠", "rank": "k"}, {"symbol": "♦", "rank": "a"}]'
-          -->
-        </template>
-      </demo-snippet>
-
-      <h3>Empty source</h3>
-      <demo-snippet>
-        <template>
-          <random-list
-            id="emptyList"
-            display
-            max="4"
-            source="">
-          </random-list>
-        </template>
-      </demo-snippet>
-
-      <h3>Max set to 0</h3>
-      <demo-snippet>
-        <template>
-          <random-list
-            id="zeroMaxList"
-            display
-            max="0"
-            source='["red", "orange", "yellow", "green", "blue", "indigo", "violet"]'>
-          </random-list>
-        </template>
-      </demo-snippet>
-
   </body>
 </html>
