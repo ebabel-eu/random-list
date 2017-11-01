@@ -11,12 +11,6 @@
     </style>
 
     <template is="dom-if" if="[[display]]">
-      <p>Source: [[source.length]] elements</p>
-      <ul>
-        <template is="dom-repeat" items="[[source]]">
-            <li>[[item]]</li>
-        </template>
-      </ul>
       <p>List: [[list.length]] elements</p>
       <ul>
         <template is="dom-repeat" items="[[list]]">
@@ -47,7 +41,6 @@
         return {
           display: {
             type: Boolean,
-            value: false,
           },
           source: {
             type: Array,
@@ -68,21 +61,46 @@
         };
       }
 
-      pickRandomList() {
-        this.display = this.display && this.source && this.source.length > 0;
+      updateProperties(input) {
+        const {
+          display,
+          source,
+          max,
+          list,
+          rest,
+        } = input;
 
-        if (!this.source || this.source.length === 0) {
-          return;
-        }
+        this.display = display;
+        this.source = source;
+        this.max = max;
+        this.list = list;
+        this.rest = rest;
+      }
 
-        if (this.max === 0) {
-          this.list = this.source;
-          this.rest = [];
-          return;
+      pickRandomList(input) {
+        let {
+          display,
+          source,
+          max,
+        } = input;
+
+        if (!source || source.length === 0 || max === 0) {
+          this.updateProperties({
+            display,
+            source: [],
+            max,
+            list: [],
+            rest: []
+          });
+
+          return {
+            list: [],
+            rest: [],
+          };
         }
 
         // Process the source.
-        const _source = this.source
+        const rest = source
           .slice(0)
           .map(item => {
             if (typeof item === 'object') {
@@ -91,32 +109,43 @@
             return item;
           });
 
-        // Update main source before any random picking.
-        this.source = _source.slice(0);
-
         // Start with an empty list that will be output.
-        const _list = [];
+        const list = [];
 
-        for (let i = 0; i < this.max; i++) {
+        for (let i = 0; i < max; i++) {
           // Pick a random element.
-          const _selection = _source[Math.floor(Math.random() * (_source.length - 1))];
+          const selection = rest[Math.floor(Math.random() * (rest.length - 1))];
 
           // Remove the random element from the source that will be output in the rest.
-          _source.splice(_source.indexOf(_selection), 1);
+          rest.splice(rest.indexOf(selection), 1);
 
           // Add the random element to the list that will be output.
-          _list.push(_selection);
+          list.push(selection);
         }
 
         // Output.
-        this.list = _list;
-        this.rest = _source;
+        this.updateProperties({
+          display,
+          source,
+          max,
+          list,
+          rest,
+        });
+
+        return {
+          list,
+          rest,
+        };
       }
 
       ready() {
         super.ready();
 
-        this.pickRandomList();
+        this.pickRandomList({
+          display: this.display,
+          source: this.source,
+          max: this.max,
+        });
       }
     }
 
